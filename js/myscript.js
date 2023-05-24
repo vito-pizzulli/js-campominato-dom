@@ -38,11 +38,11 @@ helpButton.addEventListener('click', function () {
 
     if (helpRequest == false) {
         helpRequest = true;
-        helpButton.innerHTML = "Aiuto - Si";
+        helpButton.innerHTML = "Aiuto: Si";
 
     } else {
         helpRequest = false;
-        helpButton.innerHTML = "Aiuto - No";
+        helpButton.innerHTML = "Aiuto: No";
     }
 })
 
@@ -72,7 +72,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
             cell.classList.add(cellStyle, cellSize);
             
             if (helpRequest == true) {
-                
+
                 if (cellBombList.includes(i)) {
                     cell.classList.add('help-cell');
                 }
