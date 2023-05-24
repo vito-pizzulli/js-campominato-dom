@@ -88,9 +88,14 @@ div.grid-cell {
     border: 1px solid black;
 }
 
+.clicked-cell,
+.bomb-cell {
+    font-size: 5rem;
+    color: white;
+}
+
 .clicked-cell {
     background-color: #4d84ff;
-    color: white;
 }
 
 .help-cell {

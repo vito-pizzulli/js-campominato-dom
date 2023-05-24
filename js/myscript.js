@@ -35,9 +35,11 @@ playButton.addEventListener('click', function () {
 helpButton.addEventListener('click', function () {
     helpButtonAudio.load();
     helpButtonAudio.play();
+
     if (helpRequest == false) {
         helpRequest = true;
         helpButton.innerHTML = "Aiuto - Si";
+
     } else {
         helpRequest = false;
         helpButton.innerHTML = "Aiuto - No";
@@ -70,6 +72,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
             cell.classList.add(cellStyle, cellSize);
             
             if (helpRequest == true) {
+                
                 if (cellBombList.includes(i)) {
                     cell.classList.add('help-cell');
                 }
@@ -86,6 +89,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                         cell.classList.add(cellBomb);
                         console.log("Hai cliccato la cella n° " + i + ", ma contiene una bomba!");
                         addElement('h2', 'Hai perso! Hai indovinato ' + guessedCells + ' caselle!', 'results-message', gridWrapper);
+                        cell.innerHTML = '<i class="fa-solid fa-bomb"></i>';
                         bombExploded = true;
     
                     } else {
@@ -95,7 +99,8 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                             cellSound.play();
                             guessedCells++;
                         }
-    
+                        
+                        cell.innerHTML = '<i class="fa-solid fa-check"></i>';
                         cell.classList.add(cellClick);
                         console.log("Hai cliccato la cella n° " + i)
     
