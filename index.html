@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo Minato</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="d-flex-centered">
+                <img src="img/boolean-logo.png" alt="Boolean Logo">
+                <h1>Campo Minato</h1>
+            </div>
+            <div>
+                <label for="difficulty">Difficoltà:</label>
+                <select name="difficulty" id="difficulty">
+                    <option value="1">Normale (100 celle)</option>
+                    <option value="2">Difficile (81 celle)</option>
+                    <option value="3">Estrema (49 celle)</option>
+                </select>
+                <button>Play</button>
+                <audio id="play-button-audio" src="audio/newgame.mp3"></audio>
+                <audio id="cell-click-audio" src="audio/confirm.mp3"></audio>
+            </div>
+        </div>
+    </header>
+    <main class="d-flex-centered">
+        <div class="grid-wrapper d-flex-centered">
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <span>Made with &hearts; by Boolean</span>
+        </div>
+    </footer>
+    <script src="js/myscript.js"></script>
+</body>
+</html>
