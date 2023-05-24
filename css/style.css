@@ -97,6 +97,16 @@ div.grid-cell {
     background-color: rgb(255, 44, 44);
 }
 
+.results-message {
+    position: absolute;
+    top: 50%;
+    background-color: white;
+    color: #001432;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 3px solid #001432;
+}
+
 .difficulty-1-cell-width {
     width: calc(100% / 10);
     height: calc(100% / 10);

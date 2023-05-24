@@ -57,14 +57,14 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
             cell.addEventListener('click', function () {
                 
                 if (bombExploded !== true) {
-                    
+
                     if (cellBombList.includes(i)) {
 
                         cellBombSound.load();
                         cellBombSound.play();
                         cell.classList.add(cellBomb);
                         console.log("Hai cliccato la cella n° " + i + ", ma contiene una bomba!");
-                        console.log('Hai perso! Hai indovinato ' + guessedCells + ' caselle!');
+                        addElement('h2', 'Hai perso! Hai indovinato ' + guessedCells + ' caselle!', 'results-message', gridWrapper);
                         bombExploded = true;
     
                     } else {
@@ -81,7 +81,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                         if (guessedCells == (cellNumber - cellBombList.length)) {
                             victorySound.load();
                             victorySound.play();
-                            console.log('Complimenti, hai vinto! Hai indovinato tutte le ' + (cellNumber - cellBombList.length) + " caselle!")
+                            addElement('h2', 'Complimenti, hai vinto! Hai indovinato tutte le ' + (cellNumber - cellBombList.length) + ' caselle!', 'results-message', gridWrapper);
                         }
                     }
                 }
@@ -114,4 +114,18 @@ function randomNumbersGenerator(minNumber, maxNumber, totalNumbers) {
         }
     }
     return randomNumbersList;
+}
+
+/**This function creates an html element of the chosen type and class, with the chosen text, and adds it at the end of the selected container.
+ * 
+ * @param {*} type The type of html element that will be created. 
+ * @param {*} innerText The text that the created element will have inside.
+ * @param {*} class The name of the class that will be added to the created element.
+ * @param {*} container The container at the end of which the element will be added.
+ */
+function addElement(type, innerText, elementClass, container) {
+    type = document.createElement(type);
+    type.innerHTML = innerText;
+    type.classList.add(elementClass);
+    container.append(type);
 }
