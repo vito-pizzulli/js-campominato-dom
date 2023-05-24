@@ -20,15 +20,15 @@ playButton.addEventListener('click', function () {
 
     if (difficulty == 1) {
         bombNumbers = randomNumbersGenerator(1, 100, 16);
-        minefieldGenerator (100, 'grid-cell', 'difficulty-1-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers);
+        minefieldGenerator (100, 'grid-cell', 'difficulty-1-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest);
 
     } else if (difficulty == 2) {
         bombNumbers = randomNumbersGenerator(1, 81, 16);
-        minefieldGenerator (81, 'grid-cell', 'difficulty-2-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers);
+        minefieldGenerator (81, 'grid-cell', 'difficulty-2-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest);
 
     } else {
         bombNumbers = randomNumbersGenerator(1, 49, 16);
-        minefieldGenerator (49, 'grid-cell', 'difficulty-3-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers);
+        minefieldGenerator (49, 'grid-cell', 'difficulty-3-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest);
     }
 })
 
@@ -66,7 +66,7 @@ helpButton.addEventListener('click', function () {
  * @param {*} cellWrapper The container inside which the cells will be created.
  * @param {*} cellBombList The array that contains the numbers of the cells that have a bomb inside them.
  */
-function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, victorySound, cellWrapper, cellBombList) {
+function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, victorySound, cellWrapper, cellBombList, helpRequest) {
 
     let guessedCells = 0;
     let bombExploded = false;
