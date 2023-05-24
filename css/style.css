@@ -93,6 +93,10 @@ div.grid-cell {
     color: white;
 }
 
+.bomb-cell {
+    background-color: rgb(255, 44, 44);
+}
+
 .difficulty-1-cell-width {
     width: calc(100% / 10);
     height: calc(100% / 10);
