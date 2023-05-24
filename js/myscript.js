@@ -15,7 +15,7 @@ playButton.addEventListener('click', function () {
     playButtonAudio.load();
     playButtonAudio.play();
     gridWrapper.innerHTML = ' ';
-    gridWrapper.classList.add('black-border')
+    gridWrapper.classList.add('black-border');
     difficulty = difficultySelect.value;
 
     if (difficulty == 1) {
@@ -35,14 +35,18 @@ playButton.addEventListener('click', function () {
 helpButton.addEventListener('click', function () {
     helpButtonAudio.load();
     helpButtonAudio.play();
+    gridWrapper.innerHTML = ' ';
+    gridWrapper.classList.remove('black-border');
 
     if (helpRequest == false) {
         helpRequest = true;
         helpButton.innerHTML = "Aiuto: Si";
+        addElement('h2', "Clicca su Gioca, visualizzerai le caselle in cui sono nascoste le bombe.", 'message', gridWrapper);
 
     } else {
         helpRequest = false;
         helpButton.innerHTML = "Aiuto: No";
+        addElement('h2', "Clicca su Gioca, non visualizzerai più le caselle in cui sono nascoste le bombe.", 'message', gridWrapper);
     }
 })
 
@@ -88,7 +92,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                         cellBombSound.play();
                         cell.classList.add(cellBomb);
                         console.log("Hai cliccato la cella n° " + i + ", ma contiene una bomba!");
-                        addElement('h2', 'Hai perso! Hai indovinato ' + guessedCells + ' caselle!', 'results-message', gridWrapper);
+                        addElement('h2', 'Hai perso! Hai indovinato ' + guessedCells + ' caselle!', 'message', gridWrapper);
                         cell.innerHTML = '<i class="fa-solid fa-bomb"></i>';
                         bombExploded = true;
     
@@ -107,7 +111,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                         if (guessedCells == (cellNumber - cellBombList.length)) {
                             victorySound.load();
                             victorySound.play();
-                            addElement('h2', 'Complimenti, hai vinto! Hai indovinato tutte le ' + (cellNumber - cellBombList.length) + ' caselle!', 'results-message', gridWrapper);
+                            addElement('h2', 'Complimenti, hai vinto! Hai indovinato tutte le ' + (cellNumber - cellBombList.length) + ' caselle!', 'message', gridWrapper);
                         }
                     }
                 }
