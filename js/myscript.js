@@ -26,14 +26,12 @@ playButton.addEventListener('click', function () {
         bombNumbers = randomNumbersGenerator(1, 49, 16);
         minefieldGenerator (49, 'grid-cell', 'difficulty-3-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, gridWrapper, bombNumbers);
     }
-
-    console.log(bombNumbers);
 })
 
 
 /* FUNCTIONS */
 
-/**This function creates a set number of cells inside a container. Each cell will have a class that defines its style and one that defines its size. By clicking on one of the cells, a further class will be added and, if this has not already been clicked before, a sound will be played. Some of the cells will have bombs inside, they are defined from a set array of numbers. Clicking a cell that contains a bomb will add a different class to that cell and play a different sound.
+/**This function creates a set number of cells inside a container. Each cell will have a class that defines its style and one that defines its size. By clicking on one of the cells, a further class will be added and, if this has not already been clicked before, a sound will be played. Some of the cells will have bombs inside, they are defined from a set array of numbers. Clicking a cell that contains a bomb will add a different class to that cell and play a different sound. When a bomb explodes the total attempts are printed in console.
  * 
  * @param {*} cellNumber The number of cells you want to generate.
  * @param {*} cellStyle The name of the class that defines the cell styling.
@@ -47,6 +45,8 @@ playButton.addEventListener('click', function () {
  */
 function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, cellWrapper, cellBombs) {
 
+    let attempts = 0;
+
     for (let i = 1; i <= cellNumber; i++) {
             const cell = document.createElement('div');
             cell.classList.add(cellStyle, cellSize);
@@ -59,6 +59,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                     cellBombSound.play();
                     cell.classList.add(cellBomb);
                     console.log("Hai cliccato la cella n° " + i + ", ma contiene una bomba!");
+                    console.log('Hai perso! Hai indovinato ' + attempts + ' caselle!');
 
                 } else {
 
@@ -69,6 +70,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
 
                     cell.classList.add(cellClick);
                     console.log("Hai cliccato la cella n° " + i)
+                    attempts++;
                 }
             })
             cellWrapper.appendChild(cell);
