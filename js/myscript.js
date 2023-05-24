@@ -53,7 +53,7 @@ helpButton.addEventListener('click', function () {
 
 /* FUNCTIONS */
 
-/**This function creates a set number of cells inside a container. Each cell will have a class that defines its style and one that defines its size. By clicking on one of the cells, a further class will be added and, if this has not already been clicked before, a sound will be played and a counter that keeps track of guessed cells will increase. Some of the cells will have bombs inside, they are defined from a set array of numbers. Clicking a cell that contains a bomb will add a different class to that cell and play a different sound. It will be no more possible to click other cells, and the total guessed cells number will be printed in console. If all cells without a bomb are clicked, a sound will be played and a victory message with the total guessed cell number will be printed in console.
+/**This function creates a set number of cells inside a container. Each cell will have a class that defines its style and one that defines its size. By clicking on one of the cells, a further class will be added to make it selected and, if this has not already been clicked before, a sound will be played and the variable "guessedCells" that keeps track of the total guessed cells will increase. A set array of numbers will define the cells that have bombs inside them. Clicking a cell that contains a bomb will add a different class to that cell, play another sound, and end the game. No further cell clicks will be allowed until the user starts a new game, and the correctly guessed cells number will be printed on screen with the defeat message. Clicking all the correct cells without clicking one that contains a bomb will play a different sound and end the game. No further cell clicks will be allowed until the user starts a new game, and the correctly guessed cells number will be printed on screen with the victory message.
  * 
  * @param {*} cellNumber The number of cells you want to generate.
  * @param {*} cellStyle The name of the class that defines the cell styling.
@@ -70,6 +70,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
 
     let guessedCells = 0;
     let bombExploded = false;
+    let victory = false;
 
     for (let i = 1; i <= cellNumber; i++) {
             const cell = document.createElement('div');
@@ -84,7 +85,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
 
             cell.addEventListener('click', function () {
                 
-                if (bombExploded !== true) {
+                if ((bombExploded !== true) && (victory !== true)) {
 
                     if (cellBombList.includes(i)) {
 
@@ -109,6 +110,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                         console.log("Hai cliccato la cella n° " + i)
     
                         if (guessedCells == (cellNumber - cellBombList.length)) {
+                            victory = true;
                             victorySound.load();
                             victorySound.play();
                             addElement('h2', 'Complimenti, hai vinto! Hai indovinato tutte le ' + (cellNumber - cellBombList.length) + ' caselle!', 'message', gridWrapper);
