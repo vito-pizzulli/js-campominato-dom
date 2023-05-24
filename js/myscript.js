@@ -65,6 +65,7 @@ helpButton.addEventListener('click', function () {
  * @param {*} victorySound The sound that will be played when all cells without a bomb have been clicked.
  * @param {*} cellWrapper The container inside which the cells will be created.
  * @param {*} cellBombList The array that contains the numbers of the cells that have a bomb inside them.
+ * @param {*} helpRequest If this parameter is true, the cells containing a bomb will be highlighted.
  */
 function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, victorySound, cellWrapper, cellBombList, helpRequest) {
 
