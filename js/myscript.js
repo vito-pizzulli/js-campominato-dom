@@ -41,9 +41,9 @@ playButton.addEventListener('click', function () {
  * * @param {*} cellSound The sound that will be played when clicking a cell that has not already been clicked.
  *  * * @param {*} cellBombSound The sound that will be played when clicking a cell that have a bomb inside.
  *  * @param {*} cellWrapper The container inside which the cells will be created.
- *  * @param {*} cellBombs The array that contains the numbers of the cells that have a bomb inside them.
+ *  * @param {*} cellBombList The array that contains the numbers of the cells that have a bomb inside them.
  */
-function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, cellWrapper, cellBombs) {
+function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, cellWrapper, cellBombList) {
 
     let attempts = 0;
 
@@ -53,7 +53,7 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
             
             cell.addEventListener('click', function () {
 
-                if (cellBombs.includes(i)) {
+                if (cellBombList.includes(i)) {
 
                     cellBombSound.load();
                     cellBombSound.play();
@@ -66,11 +66,15 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                     if (!cell.classList.contains(cellClick)) {
                         cellSound.load();
                         cellSound.play();
+                        attempts++;
                     }
 
                     cell.classList.add(cellClick);
                     console.log("Hai cliccato la cella n° " + i)
-                    attempts++;
+
+                    if (attempts == (cellNumber - cellBombList.length)) {
+                        console.log('Complimenti, hai vinto! Hai indovinato tutte le ' + (cellNumber - cellBombList.length) + " caselle!")
+                    }
                 }
             })
             cellWrapper.appendChild(cell);
