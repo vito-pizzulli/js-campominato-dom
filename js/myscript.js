@@ -1,11 +1,14 @@
-const playButton = document.querySelector('button');
+const playButton = document.getElementById('play-button');
+const helpButton = document.getElementById('help-button');
 const gridWrapper = document.querySelector('div.grid-wrapper');
 const difficultySelect = document.querySelector('select');
 const playButtonAudio = document.getElementById('play-button-audio');
+const helpButtonAudio = document.getElementById('help-button-audio');
 const cellClickAudio = document.getElementById('cell-click-audio');
 const cellClickBombAudio = document.getElementById('cell-click-bomb-audio');
 const victoryAudio = document.getElementById('victory-audio');
 let bombNumbers;
+let helpRequest = false;
 
 playButton.addEventListener('click', function () {
     
@@ -26,6 +29,18 @@ playButton.addEventListener('click', function () {
     } else {
         bombNumbers = randomNumbersGenerator(1, 49, 16);
         minefieldGenerator (49, 'grid-cell', 'difficulty-3-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers);
+    }
+})
+
+helpButton.addEventListener('click', function () {
+    helpButtonAudio.load();
+    helpButtonAudio.play();
+    if (helpRequest == false) {
+        helpRequest = true;
+        helpButton.innerHTML = "Aiuto - Si";
+    } else {
+        helpRequest = false;
+        helpButton.innerHTML = "Aiuto - No";
     }
 })
 
@@ -54,6 +69,12 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
             const cell = document.createElement('div');
             cell.classList.add(cellStyle, cellSize);
             
+            if (helpRequest == true) {
+                if (cellBombList.includes(i)) {
+                    cell.classList.add('help-cell');
+                }
+            }
+
             cell.addEventListener('click', function () {
                 
                 if (bombExploded !== true) {

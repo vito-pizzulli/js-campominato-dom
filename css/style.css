@@ -93,6 +93,10 @@ div.grid-cell {
     color: white;
 }
 
+.help-cell {
+    background-color: goldenrod;
+}
+
 .bomb-cell {
     background-color: rgb(255, 44, 44);
 }
