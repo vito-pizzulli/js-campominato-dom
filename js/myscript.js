@@ -14,12 +14,15 @@ playButton.addEventListener('click', function () {
 
     if (difficulty == 1) {
         divGenerator (100, 'grid-cell', 'difficulty-1-cell-width', 'clicked-cell', cellClickAudio, gridWrapper);
+        randomNumbersGenerator(1, 100, 16);
 
     } else if (difficulty == 2) {
         divGenerator (81, 'grid-cell', 'difficulty-2-cell-width', 'clicked-cell', cellClickAudio, gridWrapper);
+        randomNumbersGenerator(1, 81, 16);
 
     } else {
         divGenerator (49, 'grid-cell', 'difficulty-3-cell-width', 'clicked-cell', cellClickAudio, gridWrapper);
+        randomNumbersGenerator(1, 49, 16);
     }
 })
 
@@ -39,7 +42,7 @@ function divGenerator (divNumber, firstClass, secondClass, clickClass, clickSoun
 
     for (let i = 1; i <= divNumber; i++) {
             const cell = document.createElement('div');
-            cell.innerHTML = [i];
+            /* cell.innerHTML = [i]; */
             cell.classList.add(firstClass, secondClass);
             
             cell.addEventListener('click', function () {
@@ -54,4 +57,30 @@ function divGenerator (divNumber, firstClass, secondClass, clickClass, clickSoun
             })
             divContainer.appendChild(cell);
         }
+}
+
+/**
+ * This function creates an array of random numbers. You can choose the min and max random number that will be generated, and how many elements will the array have.
+ * @param {*} minNumber The min random number that will be generated.
+ * @param {*} maxNumber The max random number that will be generated.
+ * @param {*} totalNumbers The number of elements that the array will have.
+ */
+function randomNumbersGenerator(minNumber, maxNumber, totalNumbers) {
+
+    let randomNumbersList = [];
+
+    if ( (maxNumber - minNumber) < totalNumbers ){
+        console.log("Non è possibile generare abbastanza numeri casuali nel range selezionato.");
+
+    } else {
+        
+        while (randomNumbersList.length < totalNumbers) {
+            const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
+
+            if (!randomNumbersList.includes(randomNumber)) {
+                randomNumbersList.push(randomNumber);
+            }
+        }
+        console.log(randomNumbersList);
+    }
 }
