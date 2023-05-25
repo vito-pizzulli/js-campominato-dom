@@ -73,7 +73,7 @@ div.grid-wrapper {
 }
 
 div.grid-cell {
-    border: 2px solid rgb(60, 60, 60);
+    border: 2px solid rgb(50, 50, 50);
     text-align: center;
     transition: all .5s;
 }
@@ -85,7 +85,7 @@ div.grid-cell {
 }
 
 .black-border {
-    border: 2px solid rgb(60, 60, 60);
+    border: 2px solid rgb(50, 50, 50);
 }
 
 .bg-grid {
