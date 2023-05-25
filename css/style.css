@@ -13,7 +13,6 @@ body {
 
 header {
     height: 12vh;
-    overflow-y: auto;
 }
 
 header img {
@@ -30,7 +29,6 @@ main {
 footer {
     height: 8vh;
     padding: 1rem;
-    overflow-y: auto;
 }
 
 select,
@@ -95,19 +93,21 @@ div.grid-cell {
 .clicked-cell,
 .bomb-cell {
     font-size: 3rem;
-    color: white;
 }
 
 .clicked-cell {
     background-color: #4d84ff;
+    color: white;
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 }
 
 .help-cell {
-    background-color: #ffd968;
+    background-color: rgb(255, 183, 0);
 }
 
 .bomb-cell {
     background-color: rgb(255, 44, 44);
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 }
 
 .message {

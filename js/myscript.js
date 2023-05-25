@@ -21,15 +21,15 @@ playButton.addEventListener('click', function () {
 
     if (difficulty == 1) {
         bombNumbers = randomNumbersGenerator(1, 100, 16);
-        minefieldGenerator (100, 'grid-cell', 'difficulty-1-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest);
+        minefieldGenerator (100, 'grid-cell', 'difficulty-1-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest, 'help-cell');
 
     } else if (difficulty == 2) {
         bombNumbers = randomNumbersGenerator(1, 81, 16);
-        minefieldGenerator (81, 'grid-cell', 'difficulty-2-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest);
+        minefieldGenerator (81, 'grid-cell', 'difficulty-2-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest, 'help-cell');
 
     } else {
         bombNumbers = randomNumbersGenerator(1, 49, 16);
-        minefieldGenerator (49, 'grid-cell', 'difficulty-3-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest);
+        minefieldGenerator (49, 'grid-cell', 'difficulty-3-cell-width', 'clicked-cell', 'bomb-cell', cellClickAudio, cellClickBombAudio, victoryAudio, gridWrapper, bombNumbers, helpRequest, 'help-cell');
     }
 })
 
@@ -68,8 +68,9 @@ helpButton.addEventListener('click', function () {
  * @param {*} cellWrapper The container inside which the cells will be created.
  * @param {*} cellBombList The array that contains the numbers of the cells that have a bomb inside them.
  * @param {*} helpRequest If this parameter is true, the cells containing a bomb will be highlighted.
+ * @param {*} cellHelp The name of the class that will be added to highlight the bomb cells if the user has requested an help.
  */
-function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, victorySound, cellWrapper, cellBombList, helpRequest) {
+function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBomb, cellSound, cellBombSound, victorySound, cellWrapper, cellBombList, helpRequest, cellHelp) {
 
     let guessedCells = 0;
     let bombExploded = false;
@@ -82,8 +83,12 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
             if (helpRequest == true) {
 
                 if (cellBombList.includes(i)) {
-                    cell.classList.add('help-cell');
+                    cell.classList.add(cellHelp);
                 }
+            }
+
+            if (cellBombList.includes(i)) {
+                cell.classList.add('bomb-position');
             }
 
             cell.addEventListener('click', function () {
@@ -92,12 +97,18 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
 
                     if (cellBombList.includes(i)) {
 
+                        const bombPositions = document.querySelectorAll('.bomb-position');
+
+                        for (let i = 0; i < bombPositions.length; i++) {
+                            
+                            bombPositions[i].classList.add(cellBomb);
+                            bombPositions[i].innerHTML = '<i class="fa-solid fa-bomb"></i>';
+                        }
+
                         cellBombSound.load();
                         cellBombSound.play();
-                        cell.classList.add(cellBomb);
                         console.log("Hai cliccato la cella n° " + i + ", ma contiene una bomba!");
                         addElement('h2', 'Hai perso! Hai indovinato ' + guessedCells + ' caselle!', 'message', gridWrapper);
-                        cell.innerHTML = '<i class="fa-solid fa-bomb"></i>';
                         bombExploded = true;
     
                     } else {
