@@ -16,6 +16,7 @@ playButton.addEventListener('click', function () {
     playButtonAudio.play();
     gridWrapper.innerHTML = ' ';
     gridWrapper.classList.add('black-border');
+    gridWrapper.classList.add('bg-grid');
     difficulty = difficultySelect.value;
 
     if (difficulty == 1) {
@@ -37,6 +38,7 @@ helpButton.addEventListener('click', function () {
     helpButtonAudio.play();
     gridWrapper.innerHTML = ' ';
     gridWrapper.classList.remove('black-border');
+    gridWrapper.classList.remove('bg-grid');
 
     if (helpRequest == false) {
         helpRequest = true;
