@@ -47,6 +47,10 @@ select {
     margin: .5rem 0;
 }
 
+option { 
+    font-size: 1.3rem;
+}
+
 button {
     background-color: #4d84ff;
     transition: all .3s;
@@ -77,36 +81,22 @@ div.grid-cell {
     transition: all .5s;
 }
 
-.d-flex-centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.black-border {
-    border: 2px solid rgb(50, 50, 50);
-}
-
-.bg-grid {
-    background-color: #fff6db;
-}
-
-.clicked-cell,
-.bomb-cell {
+div.clicked-cell,
+div.bomb-cell {
     font-size: 3rem;
 }
 
-.clicked-cell {
+div.clicked-cell {
     background-color: #4d84ff;
     color: white;
     box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.3), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.help-cell {
+div.help-cell {
     background-color: rgb(255, 183, 0);
 }
 
-.bomb-cell {
+div.bomb-cell {
     background-color: rgb(255, 44, 44);
     box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.3), inset -6px -6px 10px 0 rgba(0, 0, 0, 0.3);
 }
@@ -120,6 +110,20 @@ div.grid-cell {
     border-radius: 20px;
     border: 3px solid #001432;
     text-align: center;
+}
+
+.d-flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.black-border {
+    border: 2px solid rgb(50, 50, 50);
+}
+
+.bg-grid {
+    background-color: #fff6db;
 }
 
 .difficulty-1-cell-width {
@@ -162,6 +166,10 @@ div.grid-cell {
         font-size: 1rem;
     }
 
+    option { 
+        font-size: 1rem;
+    }
+
     div.container {
         width: 100%;
     }
@@ -171,9 +179,9 @@ div.grid-cell {
         height: 400px;
     }
 
-    .clicked-cell,
-    .bomb-cell {
-        font-size: 2rem;
+    div.clicked-cell,
+    div.bomb-cell {
+        font-size: 1.8rem;
     }
 
     .difficulty-1-cell-width {
@@ -192,7 +200,7 @@ div.grid-cell {
 /* 2K Layout (from 2560px to 3840px */
 @media screen and (min-width: 2560px) {
     html {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     header img {
@@ -220,9 +228,9 @@ div.grid-cell {
 /* 4K Layout (from 3840px to higher resolutions */
 @media screen and (min-width: 3840px) {
     html {
-        font-size: 40px;
+        font-size: 30px;
     }
-
+    
     header img {
         width: 200px;
     }
