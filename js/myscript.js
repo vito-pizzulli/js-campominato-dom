@@ -124,7 +124,16 @@ function minefieldGenerator (cellNumber, cellStyle, cellSize, cellClick, cellBom
                         console.log("Hai cliccato la cella n° " + i)
     
                         if (guessedCells == (cellNumber - cellBombList.length)) {
+                            
                             victory = true;
+                            const bombPositions = document.querySelectorAll('.bomb-position');
+
+                            for (let i = 0; i < bombPositions.length; i++) {
+                            
+                                bombPositions[i].classList.add(cellBomb);
+                                bombPositions[i].innerHTML = '<i class="fa-solid fa-bomb"></i>';
+                            }
+
                             victorySound.load();
                             victorySound.play();
                             addElement('h2', 'Complimenti, hai vinto! Hai indovinato tutte le ' + (cellNumber - cellBombList.length) + ' caselle!', 'message', gridWrapper);
